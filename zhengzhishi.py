@@ -39,9 +39,16 @@ res7 = re.match(r'\S','<hahaha')
 
 # match a-z,A-Z,0-9,_,
 res8 = re.match(r'\w','Alex')
-print(res8.group())
+# print(res8.group())
 
-# match without alphabet
+# * match before string 0 time or multi times
+res9 = re.match(r'\w*','coolcool.')
+# print(res9.group())
 
+# + match before string 1 time or multi times
+res10 = re.match(r'<h4>(.+)</h4>','<h4>Ihr Profil</h4>')
+print(res10.group())
 
-
+# ? match before string 1 time or 0 time
+res11 = re.match(r'\w?','12Hello')
+# print(res11)
