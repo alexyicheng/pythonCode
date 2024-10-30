@@ -26,7 +26,6 @@ soup = BeautifulSoup(res.text,"lxml")
 for i in range(0,pages):
     # for the case if only 1 page is required
     if i <= 1:
-        rounds = 0  # count how many links was opened
         print('Its start') # for testing
         url = f'https://www.stepstone.de/work/{job_title}'
         links = []
@@ -37,6 +36,7 @@ for i in range(0,pages):
         # open the link
         for new_url in links:
             print('i am running')
+            rounds = 0  # count how many links was opened
             header = {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
                 'referer': url
