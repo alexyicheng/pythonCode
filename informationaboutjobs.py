@@ -80,6 +80,7 @@ for i in range(0,pages):
             print(skill_words)
     else:
         # case for more than 1 page is required
+        print(f'{i}.page started,just to sure that works, too')
         url = f'https://www.stepstone.de/work/{job_title}?page={pages}'
         # Get all links of the jobs
         links = []
@@ -140,4 +141,8 @@ for i in range(0,pages):
 #         url = f'https://www.stepstone.de/work/{job_title}'
 #     else:
 #         url = f'https://www.stepstone.de/work/{job_title}?page={pages}'
+
+
+
+
 
