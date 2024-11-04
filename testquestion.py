@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 string = 'Interview'
 new_string = string.replace('e','-',1)
 # print(new_string)
@@ -14,9 +15,19 @@ new_string = string.replace('e','-',1)
 # soup = BeautifulSoup(res.text,'lxml')
 # print(soup)
 
-links = [0,2,35,454,515]
-count = 0
-for newlink in links:
-    print(newlink)
-    print(count)
-    count += 1
+# links = [0,2,35,454,515]
+# count = 0
+# for newlink in links:
+#     print(newlink)
+#     print(count)
+#     count += 1
+
+
+class Kind(object):
+    def __init__(self):
+        self.name = 'Ludan'
+    def eat(self):
+        print(f'{self.name} is eating')
+
+k = Kind()
+print(k.eat())
