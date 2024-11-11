@@ -23,11 +23,16 @@ new_string = string.replace('e','-',1)
 #     count += 1
 
 
-class Kind(object):
-    def __init__(self):
-        self.name = 'Ludan'
-    def eat(self):
-        print(f'{self.name} is eating')
+# class Kind(object):
+#     def __init__(self):
+#         self.name = 'Ludan'
+#     def eat(self):
+#         print(f'{self.name} is eating')
+#
+# k = Kind()
+# print(k.eat())
 
-k = Kind()
-print(k.eat())
+dic_color = {'red':'rot','green':'Grün','gold':'金色','brown':'braun','purple':'violett'}
+print(dic_color['gold'])
+
+
