@@ -35,4 +35,7 @@ new_string = string.replace('e','-',1)
 dic_color = {'red':'rot','green':'Grün','gold':'金色','brown':'braun','purple':'violett'}
 print(dic_color['gold'])
 
-
+hero = [
+    'Ahri','Akail','Ashe','Master Yi','Soraka','Teemo','Morgana','Olaf'
+]
+print(len(hero))
