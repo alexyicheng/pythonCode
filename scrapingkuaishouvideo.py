@@ -30,17 +30,22 @@ while True:
 
     # Get video url
     try:
-        print('i am there')
         videos = JSON['data']['visionProfilePhotoList']['feeds']
+    # for the case if the kuaishou server doesnot give you the videoUrl
     except:
         break
+    # get the url of videos 1 by 1
     for video in videos:
-        print('It starts')
         videoUrl = video['photo']['photoH265Url']
-        print(count,videoUrl)
-        # res2 = requests.get(videoUrl)
-        # open(f'KuaiShouSM/{count}_sexymilf.mp4', 'wb').write(res2.content)
-        count += 1
+        # download the video as mp4 in your KuaishouSM File
+        try:
+            print(count,videoUrl)
+            res2 = requests.get(videoUrl)
+            open(f'KuaiShouSM/{count}_sexymilf.mp4', 'wb').write(res2.content)
+            count += 1
+        # fot the case if the something goes wrong skip it - Donot stop the programm
+        except (requests.RequestException, Exception):
+            continue
     cursor = JSON['data']['visionProfilePhotoList']['pcursor']
 
     # turn the page on website

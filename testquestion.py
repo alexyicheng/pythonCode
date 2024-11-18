@@ -1,3 +1,5 @@
+import sys
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -32,10 +34,26 @@ new_string = string.replace('e','-',1)
 # k = Kind()
 # print(k.eat())
 
-dic_color = {'red':'rot','green':'Grün','gold':'金色','brown':'braun','purple':'violett'}
-print(dic_color['gold'])
+# dic_color = {'red':'rot','green':'Grün','gold':'金色','brown':'braun','purple':'violett'}
+# print(dic_color['gold'])
+#
+# hero = [
+#     'Ahri','Akail','Ashe','Master Yi','Soraka','Teemo','Morgana','Olaf'
+# ]
+# print(len(hero))
 
-hero = [
-    'Ahri','Akail','Ashe','Master Yi','Soraka','Teemo','Morgana','Olaf'
-]
-print(len(hero))
+# import sys
+# print(sys.executable)
+# print(sys.path)
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .appName("Test PySpark") \
+    .getOrCreate()
+
+data = [(1, "Alice"), (2, "Bob"), (3, "Cathy")]
+df = spark.createDataFrame(data, ["ID", "Name"])
+df.show()
+
+spark.stop()
