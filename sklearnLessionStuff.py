@@ -209,6 +209,7 @@ print(f'chi-Quadrat-Statisik:{chi2_stat},P:{p_value}')
 # Survival Analysis
 import numpy as np
 from lifelines import KaplanMeierFitter
+import matplotlib.pyplot as plt
 
 time = np.array([5,6,6,2,4,3])
 event = np.array([1,1,1,0,1,0]) # 1 means happpend 0 means not happend
@@ -218,3 +219,7 @@ kmf = KaplanMeierFitter()
 kmf.fit(time,event_observed=event)
 
 kmf.plot_survival_function()
+plt.title("Kaplan-Meier Survival Curve")
+plt.xlabel("Time")
+plt.ylabel("Survival Probability")
+plt.show()
