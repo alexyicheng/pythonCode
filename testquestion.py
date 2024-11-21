@@ -46,14 +46,26 @@ new_string = string.replace('e','-',1)
 # print(sys.executable)
 # print(sys.path)
 
-from pyspark.sql import SparkSession
+# from pyspark.sql import SparkSession
+#
+# spark = SparkSession.builder \
+#     .appName("Test PySpark") \
+#     .getOrCreate()
+#
+# data = [(1, "Alice"), (2, "Bob"), (3, "Cathy")]
+# df = spark.createDataFrame(data, ["ID", "Name"])
+# df.show()
+#
+# spark.stop()
 
-spark = SparkSession.builder \
-    .appName("Test PySpark") \
-    .getOrCreate()
 
-data = [(1, "Alice"), (2, "Bob"), (3, "Cathy")]
-df = spark.createDataFrame(data, ["ID", "Name"])
-df.show()
+l = [[1,2,3],[4,5,6],[7,8,9]]
+l2 = [1,2,3,4,5,6,7,8,9]
+print(len(l2))
+for elements in range(len(l2)):
+   l2[elements]  *= 10
+   # l2[elements] = elements * 10 # difference start with l2[0] = 0 and end with l2[9] = 8
+print(l2)
 
-spark.stop()
+# l2 = [elements * 10 for elements in l2]
+# print(l2)

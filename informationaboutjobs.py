@@ -54,30 +54,34 @@ for i in range(0,pages):
             # extract the qualifications from <script type="application/ld+json">*</script>
             extract_qualification = [json.loads(x.string) for x in soup2.find_all('script', type='application/ld+json')]
             print(extract_qualification)
+            try:
+                # extract the skills of job
+                for skill in extract_qualification:
+                    skill_info = skill['description']
+                    # print(skill_info)
+                    # print(type(skill_info))
+                    infos = BeautifulSoup(skill_info, 'lxml')
+                    # filter_infos_position = infos.find_all('h4')
+                    # print(filter_infos_position)
+                    # [<h4>Ihre Aufgaben</h4>, <h4>Ihr Profil</h4>, <h4>Unser Angebot</h4>, <h4>Contact</h4>]
+                    filter_infos = infos.find_all('ul')[1]
+                    skill_for_your_job = filter_infos.find_all('li')
+                    # print(skill_for_your_job)
 
-            # extract the skills of job
-            for skill in extract_qualification:
-                skill_info = skill['description']
-                # print(skill_info)
-                # print(type(skill_info))
-                infos = BeautifulSoup(skill_info, 'lxml')
-                # filter_infos_position = infos.find_all('h4')
-                # print(filter_infos_position)
-                # [<h4>Ihre Aufgaben</h4>, <h4>Ihr Profil</h4>, <h4>Unser Angebot</h4>, <h4>Contact</h4>]
-                filter_infos = infos.find_all('ul')[1]
-                skill_for_your_job = filter_infos.find_all('li')
-                # print(skill_for_your_job)
+                    for skills in skill_for_your_job:
+                        required_skills.append(str(skills))
+                    # print(required_skills)
+                    # extract the skill of job to key word
 
-                for skills in skill_for_your_job:
-                    required_skills.append(str(skills))
-                # print(required_skills)
-                # extract the skill of job to key word
-
-                for r_s in required_skills:
-                    skill_row = re.findall('<li>(.+)</li>', r_s)
-                    for word in skill_row:
-                        skill_words.extend(word.split())
-            print(skill_words)
+                    for r_s in required_skills:
+                        skill_row = re.findall('<li>(.+)</li>', r_s)
+                        for word in skill_row:
+                            skill_words.extend(word.split())
+                    open(f'{job_title}_Infomations.txt','w',encoding='utf-8').write(skill_words)
+                    # print(skill_words)
+            except(requests.RequestException, Exception):
+                print('something goes wrong :',new_url)
+                continue
     else:
         # case for more than 1 page is required
         print(f'{i}.page started,just to sure that works, too')
@@ -88,47 +92,53 @@ for i in range(0,pages):
             links.append('https://www.stepstone.de/'+link.get("href"))
         # print(links)
 
-        # open the link
-        new_url = links[3]
-        header ={
-            'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-            'referer':url
-        }
-        print(new_url)
+        for new_url in links:
+            print('i am running')
+            rounds = 0  # count how many links was opened
+            header = {
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+                'referer': url
+            }
+            print(new_url)
+            print(rounds)
+            rounds = + 1
 
-        # # get the information of the link
-        res2 = requests.get(new_url,headers=header)
-        # web_content = res2.text
-        soup2 = BeautifulSoup(res2.text,'lxml')
-        # print(soup2)
+            # # get the information of the link
+            res2 = requests.get(new_url, headers=header)
+            # web_content = res2.text
+            soup2 = BeautifulSoup(res2.text, 'lxml')
+            # print(soup2)
 
-        # extract the qualifications from <script type="application/ld+json">*</script>
-        extract_qualification = [ json.loads(x.string) for x in soup2.find_all('script', type='application/ld+json') ]
-        # print(extract_qualification)
+            # extract the qualifications from <script type="application/ld+json">*</script>
+            extract_qualification = [json.loads(x.string) for x in soup2.find_all('script', type='application/ld+json')]
+            print(extract_qualification)
+            try:
+                # extract the skills of job
+                for skill in extract_qualification:
+                    skill_info = skill['description']
+                    # print(skill_info)
+                    # print(type(skill_info))
+                    infos = BeautifulSoup(skill_info, 'lxml')
+                    # filter_infos_position = infos.find_all('h4')
+                    # print(filter_infos_position)
+                    # [<h4>Ihre Aufgaben</h4>, <h4>Ihr Profil</h4>, <h4>Unser Angebot</h4>, <h4>Contact</h4>]
+                    filter_infos = infos.find_all('ul')[1]
+                    skill_for_your_job = filter_infos.find_all('li')
+                    # print(skill_for_your_job)
 
-        # extract the skills of job
-        for skill in extract_qualification:
-            skill_info = skill['description']
-            # print(skill_info)
-            # print(type(skill_info))
-            infos = BeautifulSoup(skill_info,'lxml')
-            # filter_infos_position = infos.find_all('h4')
-            # print(filter_infos_position)
-            # [<h4>Ihre Aufgaben</h4>, <h4>Ihr Profil</h4>, <h4>Unser Angebot</h4>, <h4>Contact</h4>]
-            filter_infos = infos.find_all('ul')[1]
-            skill_for_your_job = filter_infos.find_all('li')
-            # print(skill_for_your_job)
-            required_skills = []
-            for skills in skill_for_your_job:
-                required_skills.append(str(skills))
-            # print(required_skills)
-            # extract the skill of job to key word
-            skill_words = []
-            for r_s in required_skills:
-                skill_row = re.findall('<li>(.+)</li>',r_s)
-                for word in skill_row:
-                    skill_words.extend(word.split())
-            print(skill_words)
+                    for skills in skill_for_your_job:
+                        required_skills.append(str(skills))
+                    # print(required_skills)
+                    # extract the skill of job to key word
+
+                    for r_s in required_skills:
+                        skill_row = re.findall('<li>(.+)</li>', r_s)
+                        for word in skill_row:
+                            skill_words.extend(word.split())
+                print(skill_words)
+            except(requests.RequestException, Exception):
+                print('something goes wrong :', new_url)
+                continue
 
 
 
