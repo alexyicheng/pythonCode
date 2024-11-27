@@ -44,11 +44,13 @@ class InOutString(object):
 c = 50
 h = 30
 value = []
-print('pleaes insert some number:')
-items = [x for x in input().split(',')]
-for d in items:
-    value.append(str(int(round(math.sqrt(2*c*float(d)/h)))))
-    print(','.join(value))
+# print('pleaes insert some number:')
+# items = [x for x in input().split(',')]
+# for d in items:
+#     value.append(str(int(round(math.sqrt(2*c*float(d)/h)))))
+#     print(','.join(value))
 
+my_list = [1,2,3].remove(3)
+print(my_list)
 
 
