@@ -1,5 +1,5 @@
 # 15.10.2024
-from tkinter.font import names
+
 
 
 class Person(object):

@@ -23,3 +23,20 @@ for position,value in enumerate(list_1):
 set_1 = set(list_1)
 print(set_1) # delete duplicates
 
+lst1 = [12,3,4,5]
+lst2 = [3,4,5]
+# incorporation/union 2 list
+print(lst1+lst2)
+
+# kopy list
+print(lst1*2)
+
+# exist in list
+print(12 in lst1)
+if 12 in lst1:
+    print('exist')
+else:
+    print('no exist')
+
+# no exist in list
+print(12 not in lst1)
