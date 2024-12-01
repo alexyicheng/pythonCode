@@ -69,3 +69,9 @@ print(l2)
 
 # l2 = [elements * 10 for elements in l2]
 # print(l2)
+
+
+student_info= [{'id':1,'name':'Alex'},{'id':2,'name':'Olga'}]
+del_id = 1
+del student_info[del_id]
+print(student_info)
