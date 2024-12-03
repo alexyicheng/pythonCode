@@ -53,4 +53,10 @@ value = []
 my_list = [1,2,3].remove(3)
 print(my_list)
 
+my_string = 'ABCDEFGHIJ'
+print(my_string[::-1])
+print(my_string[1:5]) # BCDE
+
+
+
 
