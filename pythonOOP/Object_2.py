@@ -30,7 +30,7 @@ class Test(object):
         # expand father class methode
         res = super().__new__(cls)  #rewrite methode
         return res
-        # import : rewrite __new__() have to use return super().__new__(cls) otherwise python doesnot have memory
+        # import : overwrite __new__() have to use return super().__new__(cls) otherwise python doesnot have memory
 # te = Test()
 
 class Person(object):

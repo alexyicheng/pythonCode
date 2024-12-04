@@ -1,5 +1,8 @@
 # 04.12.2024
 
+# use privat method in public methode
+# to show the privat value of class
+
 # create class Phone()
 class Phone(object):
     # define init object
