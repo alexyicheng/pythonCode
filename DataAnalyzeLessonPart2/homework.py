@@ -7,4 +7,4 @@ people = [{'name': 'Alice', 'age': 30}, {'name': 'Bob', 'age': 25}, {'name': 'Ch
 print(people[1]['age'])
 
 courses = {'数学': ['代数', '微积分', '几何学'], '科学': ['物理', '化学', '生物']}
-print(courses['数学'].index('几何学')+1)
+print(len(courses['数学']))
