@@ -18,20 +18,28 @@ import random
 #         i += 1
 # print(sum_2)
 
-papier = 2
-stone = 1
-scissors = 0
 
-input_PC = random.randint(0,2)
+stone = 0
+scissors = 1
+papier = 2
+
+info = {0:'stone',1:'scissors',2:'papier'}
 while True:
+    input_PC = random.randint(0,2)
     input_human = int(input('please insert papier,stone or scissors'))
-    if input_PC == input_human:
-        print('correct')
+    if input_human == -1:
         break
-    elif input_PC > input_human:
-        print('to small')
+    if input_human in [0,1,2]:
+        if input_PC == input_human:
+            print(f'PC wählt {info[input_PC]},human wählt {info[input_human]},gleich stand')
+        elif (input_PC == 0 and input_human == 1) or (input_PC == 1 and input_human == 2) or (input_PC == 2 and input_human == 0):
+            print(f'PC wählt {info[input_PC]},human wählt {info[input_human]},PC hat gewonnen')
+        else:
+            f'PC wählt {info[input_PC]},human wählt {info[input_human]},Mensch hat gewonnen'
     else:
-        print('to big')
+        print('please insert stone,scissors and paper')
+
+
 
 
 
