@@ -14,13 +14,19 @@ for student in students:
     if student['score'] <= 60:
         print(f'name:{student['name']}, score:{student['score']}')
         count += 1
-print('There are 2 students, failed the exam')
+print(f'There are {count} students, failed the exam')
 
 students_scores = {
    "张三": {"语文": 90, "数学": 85, "英语": 88},
    "李四": {"语文": 92, "数学": 80, "英语": 86},
    "王五": {"语文": 85, "数学": 78, "英语": 90}
 }
+
+for key,value in students_scores.items():
+    summe = 0
+    for k,v in  value.items():
+        summe = summe + v
+    print(f'{key} average is {round(summe/len(value),2)}')
 
 for key,value in students_scores.items():
     avg_score = sum(value.values())/len(value)
@@ -36,5 +42,9 @@ from collections import Counter
 fruit_count = dict(Counter(fruits))
 print(fruit_count)
 
-
+fruits_set = set(fruits)
+ls_dict = {}
+for fruit in fruits_set:
+    ls_dict[fruit] = fruits.count(fruit)
+print(ls_dict)
 
