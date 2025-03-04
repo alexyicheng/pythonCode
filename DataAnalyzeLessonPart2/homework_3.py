@@ -48,3 +48,11 @@ for fruit in fruits_set:
     ls_dict[fruit] = fruits.count(fruit)
 print(ls_dict)
 
+ls_dict_2 = {}
+for fruit in fruits:
+    if fruit in ls_dict_2:
+        ls_dict_2[fruit] = ls_dict_2[fruit] + 1
+    else:
+        ls_dict_2[fruit] = 1
+print(ls_dict_2)
+
