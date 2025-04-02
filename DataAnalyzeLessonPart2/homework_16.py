@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv(r'C:\Users\AY\Desktop\pythonCode\DataAnalyzeLessonPart2\students_scores.csv')
+data = pd.read_csv(r'../DataAnalyzeLessonPart2/students_scores.csv')
 
 df = pd.DataFrame(data)
 
