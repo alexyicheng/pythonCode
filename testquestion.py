@@ -71,7 +71,19 @@ print(l2)
 # print(l2)
 
 
-student_info= [{'id':1,'name':'Alex'},{'id':2,'name':'Olga'}]
-del_id = 1
-del student_info[del_id]
-print(student_info)
+# student_info= [{'id':1,'name':'Alex'},{'id':2,'name':'Olga'}]
+# del_id = 1
+# del student_info[del_id]
+# print(student_info)
+
+for i in 'China':
+   for k in range(2):
+      print(i,end='')
+      if i == 'n':
+         break
+
+for i in 'China':
+   for k in range(2):
+      print(i,end='')
+   if i == 'n':
+       break
